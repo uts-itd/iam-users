@@ -24,5 +24,5 @@ resource "aws_secretsmanager_secret_version" "credentials" {
   for_each      = var.users
 
   secret_id     = aws_secretsmanager_secret.credentials[each.key].id
-  secret_string = "{\"AccessKey\": data.aws_iam_access_key.credentials${each.key}.id,\"SecretAccessKey\": data.aws_iam_access_key.credentials${each.key}.secret}"
+	secret_string = jsonencode({"AccessKey" = aws_iam_access_key.credentials.*.id, "SecretAccessKey" = aws_iam_access_key.credentials.*.secret})
 }
