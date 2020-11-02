@@ -21,15 +21,8 @@ resource "aws_secretsmanager_secret" "credentials" {
 }
 
 resource "aws_secretsmanager_secret_version" "credentials" {
-  secret_id     = aws_secretsmanager_secret.credentials.*.id
-  secret_string = "{\"AccessKey\": data.aws_iam_access_key.credentials.*.id,\"SecretAccessKey\": data.aws_iam_access_key.credentials.*.secret}"
-}
+  for_each      = var.users
 
-resource "aws_iam_user_group_membership" "group_membership" {
-  for_each      = var.group_memberships
-
-  user          = each.key
-  groups        = each.value
-
-  depends_on    = [aws_iam_user.user]
+  secret_id     = aws_secretsmanager_secret.credentials[each.key].id
+  secret_string = "{\"AccessKey\": data.aws_iam_access_key.credentials${each.key}.id,\"SecretAccessKey\": data.aws_iam_access_key.credentials${each.key}.secret}"
 }
