@@ -4,8 +4,6 @@ resource "aws_iam_user" "user" {
   name          = each.key
   path          = each.value["path"]
   force_destroy = each.value["force_destroy"]
-
-  #tags          = map("EmailAddress", each.value["tag_email"])
 }
 
 resource "aws_iam_access_key" "credentials" {
