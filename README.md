@@ -29,6 +29,10 @@ To achieve this, please take a look at the following code:
     }
     
     output "user_ids" {
+      value             = module.users.user_name
+    }
+    
+    output "user_ids" {
       value             = module.users.user_ids
     }
 
