@@ -38,12 +38,10 @@ To achieve this, please take a look at the following code:
       "user-1" = {
         path            = "/"
         force_destroy   = true
-        tag_email       = "foo@example.com"
       }
       "user-2" = {
         path            = "/"
         force_destroy   = true
-        tag_email       = "bar@example.com"
       }
     }
 
