@@ -7,9 +7,9 @@ output "user_ids" {
 
 output "user_name" {
   value = {
-    for users in aws_iam_user.user:
+    aws_iam_user.user.users.name
+    #for users in aws_iam_user.user:
     #users.name => users.name
-    = users.name
   }
 }
   
