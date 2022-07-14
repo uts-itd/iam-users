@@ -6,11 +6,11 @@ output "user_ids" {
 }
 
 output "user_name" {
-  value = {
-    aws_iam_user.user.users.name
+  value       = try(aws_iam_user.user[0].name)
+  #value = {
     #for users in aws_iam_user.user:
     #users.name => users.name
-  }
+  #}
 }
   
 output "user_arns" {
