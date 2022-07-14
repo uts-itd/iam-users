@@ -28,7 +28,7 @@ To achieve this, please take a look at the following code:
       value             = module.users.user_arns
     }
     
-    output "user_ids" {
+    output "user_name" {
       value             = module.users.user_name
     }
     
