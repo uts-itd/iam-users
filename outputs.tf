@@ -20,6 +20,6 @@ output "user_arns" {
 }
 
 output "usernames" {
-  value = aws_iam_user.user[each.key].name
+  value = values(aws_iam_user.user)[*].name
 }
   
