@@ -19,14 +19,7 @@ output "user_arns" {
   }
 }
 
-output "userids" {
-  value       = try(aws_iam_user.user[*].unique_id, "")
-}
-
 output "usernames" {
-  value       = try(aws_iam_user.user[*].name, "")
+  value = values(aws_iam_user.user).*.name
 }
   
-output "userarns" {
-  value       = try(aws_iam_user.user[*].arn, "")
-}
