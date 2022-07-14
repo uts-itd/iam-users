@@ -6,7 +6,7 @@ output "user_ids" {
 }
 
 output "user_name" {
-  value       = flatten(aws_iam_user.user[0].name)
+  value       = values(aws_iam_user.)[*].name
   #value = {
     #for users in aws_iam_user.user:
     #users.name => users.name
