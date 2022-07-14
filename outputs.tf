@@ -25,7 +25,7 @@ output "userids" {
 
 output "usernames" {
   #value       = values(aws_iam_user.user)[*].name
-  value       = try(aws_iam_user.user[0].name, "")
+  value       = try(aws_iam_user.user[*].name, "")
 }
   
 output "userarns" {
